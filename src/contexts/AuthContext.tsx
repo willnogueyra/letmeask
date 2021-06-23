@@ -21,6 +21,7 @@ export const AuthContext = createContext({} as AuthContextType)
 export function AuthContextProvider(props: AuthContextProviderProps) {
   const [user, setUser] = useState<User>();
 
+  /* hook para verificar a autenticação ao dar F5 para vê se continua logado */
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
@@ -42,6 +43,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
   }, [])
 
+  /* Login com o google account */
   async function signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
 
