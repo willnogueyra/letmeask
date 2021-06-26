@@ -94,7 +94,7 @@ Você pode visualiza o layout do projeto pelo Figma.
 
 Bônus
 - [x] Tema dark
-- [ ] Responsividade
+- [x] Responsividade
 - [ ] Versão PWA
 - [ ] Outro banco de dados
 
