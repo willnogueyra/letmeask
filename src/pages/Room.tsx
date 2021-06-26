@@ -103,6 +103,7 @@ export function Room() {
             placeholder="O que você quer perguntar ?"
             onChange={event => setNewQuestion(event.target.value)}
             value={newQuestion}
+            maxLength={300}
           />
           <div className="form-footer">
             { user ? ( // if em react (se)

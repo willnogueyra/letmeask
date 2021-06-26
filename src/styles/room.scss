@@ -1,7 +1,7 @@
 #page-room {
   &.dark {
     background-color: #222222;
-    height: 100vh;
+    height: 100%;
 
     header {
       border-bottom: 1px solid #333333;
@@ -169,6 +169,37 @@
           }
         }
       }
+    }
+  }
+}
+@media screen and (max-width: 860px) {
+  #page-room {
+    & header {
+      flex-direction: column;
+      align-items: center;
+      
+      .content > div {
+        gap: 9px;
+      }
+    }
+    .content {
+      flex-direction: column;
+
+      
+      > img {
+        margin-bottom: 20px
+      }
+    }
+
+    main .room-title {
+      justify-content: center;
+    }
+    main form {
+      max-width:100% -20px;
+      min-width: 240px;
+      margin: 0 auto;
+      margin-left: 20px;
+      margin-right: 20px;
     }
   }
 }

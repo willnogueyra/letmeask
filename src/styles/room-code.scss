@@ -27,3 +27,18 @@
     font-weight: 500;
   }
 }
+@media screen and (max-width: 554px) {
+  .room-code { 
+
+    div { // icon
+      padding: 0 10px;
+    }
+
+    span { // texto
+      width: 100%;
+      font-size: 11px;
+      padding: 15px 5px 15px 5px;
+    }
+
+  }
+}
