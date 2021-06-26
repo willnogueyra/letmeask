@@ -7,8 +7,11 @@ import { Button } from '../components/Button';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 //import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
+import Switch from 'react-switch';
 import { useRoom } from '../hooks/useRoom';
 import { database } from '../services/firebase';
+
 
 import '../styles/room.scss';
 
@@ -22,7 +25,7 @@ export function AdminRoom() {
   //const { user } = useAuth();
   const history = useHistory();
   const params = useParams<RoomParams>();
-
+  const { theme, toggleTheme} = useTheme();
   const roomId = params.id;
 
   const {title, questions} = useRoom(roomId);
@@ -54,13 +57,35 @@ export function AdminRoom() {
   }
   
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>Encerrar Sala</Button>
+            <Switch 
+                className="switchToggle"
+                onChange={toggleTheme}
+                checked={theme === 'dark'}
+                checkedIcon={false}
+                uncheckedIcon={false}
+                height={20}
+                width={40}
+                handleDiameter={20}
+                offColor="#0074bf"
+                onColor="#0074bf"
+                uncheckedHandleIcon={
+                  <svg viewBox="0 0 10 10" height="100%" width="100%" fill="#A8A8A8">
+                    <circle r={3} cx={5} cy={5} />
+                  </svg>
+                }
+                checkedHandleIcon={
+                  <svg viewBox="0 0 10 10" height="100%" width="100%" fill="#333">
+                    <circle r={3} cx={5} cy={5} />
+                  </svg>
+                }
+              />
           </div>
         </div>
       </header>
@@ -70,7 +95,7 @@ export function AdminRoom() {
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}       
         </div>
 
-        <div className="question-list">
+        <div id="question-list" className={theme} >
           {questions.map(question => {
             return (
               <Question 

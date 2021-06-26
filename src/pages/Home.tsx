@@ -7,13 +7,13 @@ import { database } from '../services/firebase';
 import { Button } from '../components/Button';
 import '../styles/auth.scss';
 import { useAuth } from '../hooks/useAuth';
-
-
-
+import { useTheme } from '../hooks/useTheme';
+import Switch from 'react-switch';
 
 export function Home() {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
+  const { theme, toggleTheme} = useTheme();
   const [roomCode, setRoomCode] = useState('');
 
   async function handleCreateRoom() {
@@ -47,12 +47,35 @@ export function Home() {
   }
 
   return (
-    <div id="page-auth">
+    <div id="page-auth" className={theme}>
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de Q&amp;A ao-vivo</strong>
         <p>Tire as dúvidas da sua audiência em tempo-real</p>
       </aside>
+      <section className="switchTheme">
+      <Switch 
+        onChange={toggleTheme}
+        checked={theme === 'dark'}
+        checkedIcon={false}
+        uncheckedIcon={false}
+        height={20}
+        width={40}
+        handleDiameter={20}
+        offColor="#0074bf"
+        onColor="#0074bf"
+        uncheckedHandleIcon={
+          <svg viewBox="0 0 10 10" height="100%" width="100%" fill="#A8A8A8">
+            <circle r={3} cx={5} cy={5} />
+          </svg>
+        }
+        checkedHandleIcon={
+          <svg viewBox="0 0 10 10" height="100%" width="100%" fill="#333">
+            <circle r={3} cx={5} cy={5} />
+          </svg>
+        }
+      />
+      </section>
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />

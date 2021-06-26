@@ -1,4 +1,42 @@
 #page-room {
+  &.dark {
+    background-color: #222222;
+    height: 100vh;
+
+    header {
+      border-bottom: 1px solid #333333;
+    }
+
+    main .room-title h1 {
+      color: #f8f8f8;
+    }
+
+    main form textarea {
+      background: #333333;
+      color: #f8f8f8;
+    }
+
+    main .form-footer .user-info span {
+      color: #737380;
+    }
+
+    header .content .button { // botão de encerrar
+      background: #0074BF;
+
+      &.outlined {
+        background: #0074BF;
+        color: #fff;
+      }
+    }
+    .room-code {
+      background: #0093f5;
+      
+      & span {
+        color: #f8f8f8;
+      }
+    }
+  }
+
   header {
     padding: 24px;
     border-bottom: 1px solid #e2e2e2;
@@ -17,7 +55,8 @@
       > div {
         display: flex;
         gap: 16px;
-
+        align-items: center;
+        
         button {
           height: 40px;
         }
@@ -42,10 +81,10 @@
 
       span {
         margin-left: 16px;
-        background: #e559f9;
+        background: #0074bf;
         border-radius: 9999px;
         padding: 8px 16px;
-        color: #fff;
+        color: #f8f8f8;
         font-weight: 500;
         font-size: 14px;
       }
@@ -105,8 +144,31 @@
       }
     }
 
-    .question-list {
+    #question-list {
       margin-top: 32px;
+
+      &.dark {
+        .question {
+          background: #444444;
+
+          &.highlighted {
+            background: #444444; 
+            border: 2px solid #0074bf; // favorita
+          }
+  
+          &.answered {
+            background: #333333; // respondida 
+          }
+
+          p {
+            color: #F8F8F8;
+          }
+
+          & footer .user-info span{
+            color: #f0f0f0;
+          }
+        }
+      }
     }
   }
 }

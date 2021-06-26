@@ -7,7 +7,10 @@ import { RoomCode } from '../components/RoomCode';
 import { useAuth } from '../hooks/useAuth';
 import { useRoom } from '../hooks/useRoom';
 import { database } from '../services/firebase';
+import { useTheme } from '../hooks/useTheme';
+import Switch from 'react-switch';
 import '../styles/room.scss';
+
 
 
 type RoomParams = {
@@ -19,6 +22,7 @@ export function Room() {
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
+  const { theme, toggleTheme} = useTheme();
 
   const {title, questions} = useRoom(roomId);
   
@@ -58,11 +62,34 @@ export function Room() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
+          <div>
           <RoomCode code={roomId} />
+          <Switch 
+                onChange={toggleTheme}
+                checked={theme === 'dark'}
+                checkedIcon={false}
+                uncheckedIcon={false}
+                height={20}
+                width={40}
+                handleDiameter={20}
+                offColor="#0074bf"
+                onColor="#0074bf"
+                uncheckedHandleIcon={
+                  <svg viewBox="0 0 10 10" height="100%" width="100%" fill="#A8A8A8">
+                    <circle r={3} cx={5} cy={5} />
+                  </svg>
+                }
+                checkedHandleIcon={
+                  <svg viewBox="0 0 10 10" height="100%" width="100%" fill="#333">
+                    <circle r={3} cx={5} cy={5} />
+                  </svg>
+                }
+              />
+          </div>
         </div>
       </header>
       <main>
@@ -90,7 +117,7 @@ export function Room() {
           </div>
         </form>
         
-        <div className="question-list">
+        <div id="question-list" className={theme}>
           {questions.map(question => {
             return (
               <Question 
