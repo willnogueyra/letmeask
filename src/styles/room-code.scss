@@ -14,6 +14,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    border-right: 1px solid #fff;
   }
 
   span {
@@ -27,17 +28,17 @@
     font-weight: 500;
   }
 }
-@media screen and (max-width: 554px) {
-  .room-code { 
+@media screen and (max-width: 540px) {
+  .room-code {
 
-    div { // icon
+    div { // é
       padding: 0 10px;
     }
 
-    span { // texto
+    span {
       width: 100%;
-      font-size: 11px;
-      padding: 15px 5px 15px 5px;
+      font-size: 12px;
+      padding: 5px 12px 5px 10px;
     }
 
   }
